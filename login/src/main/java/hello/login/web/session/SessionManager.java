@@ -33,8 +33,8 @@ public class SessionManager {
         sessionStore.put(sessionId, value);
 
         // 쿠키 생성
-        Cookie mySessionCooke = new Cookie(SESSION_COOKIE_NAME, sessionId);
-        response.addCookie(mySessionCooke);
+        Cookie mySessionCookie = new Cookie(SESSION_COOKIE_NAME, sessionId);
+        response.addCookie(mySessionCookie);
     }
 
     /**
