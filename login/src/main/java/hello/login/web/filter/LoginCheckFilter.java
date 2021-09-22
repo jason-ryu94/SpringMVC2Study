@@ -27,7 +27,8 @@ public class LoginCheckFilter implements Filter {
 
         try {
 
-            if(!isLoginCheckPath(requestURI)) {
+
+            if(isLoginCheckPath(requestURI)) {
                 log.info("인증 체크 로직 실행 {}", requestURI);
                 HttpSession session = httpRequest.getSession(false);
                 if(session == null || session.getAttribute(SessionConst.LOGIN_MEMBER) == null) {
@@ -46,6 +47,9 @@ public class LoginCheckFilter implements Filter {
         }
     }
 
+    /**
+     * 화이트 리스트의 경우 인증 체크 X
+     */
     private boolean isLoginCheckPath(String requestURI) {
         return !PatternMatchUtils.simpleMatch(whitelist, requestURI);
     }
